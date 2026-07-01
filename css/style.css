@@ -64,3 +64,106 @@ body{
 
     transform:translateY(-4px);
 }
+/* LOGIN PAGE */
+
+.login-page{
+
+    min-height:100vh;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(135deg,#050505,#111827);
+}
+
+.login-card{
+
+    width:90%;
+
+    max-width:420px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    border-radius:24px;
+
+    padding:40px;
+
+    backdrop-filter:blur(15px);
+
+    text-align:center;
+}
+
+.login-card h1{
+
+    font-size:42px;
+
+    margin-bottom:10px;
+}
+
+.login-card p{
+
+    color:#bdbdbd;
+
+    margin-bottom:35px;
+}
+
+.login-card input{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-bottom:18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#1b1b1b;
+
+    color:white;
+
+    font-size:16px;
+}
+
+.login-btn{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:#2563eb;
+
+    color:white;
+
+    font-size:18px;
+
+    cursor:pointer;
+
+    transition:.3s;
+}
+
+.login-btn:hover{
+
+    background:#1d4ed8;
+}
+
+.login-card a{
+
+    display:block;
+
+    margin-top:18px;
+
+    color:#8ab4ff;
+
+    text-decoration:none;
+}
