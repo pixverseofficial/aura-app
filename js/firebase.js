@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-app.js";
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
+  apiKey: "AIzaSyDdL_9FJWLZrIDX2jzMuu1CNgTfucvTzu4",
   authDomain: "aura-e4fd4.firebaseapp.com",
   projectId: "aura-e4fd4",
   storageBucket: "aura-e4fd4.firebasestorage.app",
