@@ -156,7 +156,25 @@ onAuthStateChanged(auth, async (user) => {
 
           requestList.innerHTML += `
             <div class="activity-card">
-              Friend request received
+
+              <h3>Friend Request</h3>
+
+              <p>From: ${request.data().from}</p>
+
+              <button
+                class="login-btn acceptBtn"
+                data-id="${request.id}"
+              >
+                Accept
+              </button>
+
+              <button
+                class="login-btn rejectBtn"
+                data-id="${request.id}"
+              >
+                Reject
+              </button>
+
             </div>
           `;
 
