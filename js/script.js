@@ -128,6 +128,44 @@ onAuthStateChanged(auth, async (user) => {
 
     }
 
+    const requestList = document.getElementById("requestList");
+
+    if (requestList) {
+
+      const requestQuery = query(
+        collection(db, "friendRequests"),
+        where("to", "==", user.uid),
+        where("status", "==", "pending")
+      );
+
+      const requests = await getDocs(requestQuery);
+
+      if (requests.empty) {
+
+        requestList.innerHTML = `
+          <div class="activity-card">
+            No friend requests.
+          </div>
+        `;
+
+      } else {
+
+        requestList.innerHTML = "";
+
+        requests.forEach((request) => {
+
+          requestList.innerHTML += `
+            <div class="activity-card">
+              Friend request received
+            </div>
+          `;
+
+        });
+
+      }
+
+    }
+
   }
 
 });
