@@ -2,7 +2,7 @@ import "./firebase.js";
 
 console.log("AURA Loaded");
 
-import { auth } from "./firebase.js";
+import { auth, db } from "./firebase.js";
 import {
   createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
