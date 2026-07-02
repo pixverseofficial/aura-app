@@ -151,15 +151,26 @@ if (searchBtn) {
 
   searchBtn.addEventListener("click", async () => {
 
-    const email = document.getElementById("searchEmail").value.trim();
+    const searchText = document.getElementById("searchEmail").value.trim();
     const result = document.getElementById("searchResult");
 
-    const q = query(
+    let q = query(
       collection(db, "users"),
-      where("email", "==", email)
+      where("email", "==", searchText)
     );
 
-    const querySnapshot = await getDocs(q);
+    let querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+
+      q = query(
+        collection(db, "users"),
+        where("name", "==", searchText)
+      );
+
+      querySnapshot = await getDocs(q);
+
+    }
 
     if (querySnapshot.empty) {
 
