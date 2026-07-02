@@ -202,6 +202,8 @@ if (searchBtn) {
 
     });
 
+    console.log(document.querySelector(".addFriendBtn"));
+
     const addFriendBtn = document.querySelector(".addFriendBtn");
 
     if (addFriendBtn) {
