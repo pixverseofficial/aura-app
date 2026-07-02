@@ -46,7 +46,8 @@ if (signupForm) {
 
 }
 import {
-  signInWithEmailAndPassword
+  signInWithEmailAndPassword,
+  signOut
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
 const loginForm = document.getElementById("loginForm");
@@ -92,3 +93,19 @@ onAuthStateChanged(auth, (user) => {
   }
 
 });
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+  logoutBtn.addEventListener("click", async () => {
+
+    await signOut(auth);
+
+    alert("Logged out successfully!");
+
+    window.location.href = "login.html";
+
+  });
+
+}
