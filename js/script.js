@@ -7,6 +7,10 @@ import {
   createUserWithEmailAndPassword
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
+import {
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
 const signupForm = document.getElementById("signupForm");
 
 if (signupForm) {
