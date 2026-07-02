@@ -20,7 +20,9 @@ import {
   where,
   getDocs,
   addDoc,
-  orderBy
+  orderBy,
+  updateDoc,
+  deleteDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const signupForm = document.getElementById("signupForm");
