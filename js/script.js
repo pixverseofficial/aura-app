@@ -41,3 +41,35 @@ if (signupForm) {
   });
 
 }
+import {
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
+
+const loginForm = document.getElementById("loginForm");
+
+if (loginForm) {
+
+  loginForm.addEventListener("submit", async (e) => {
+
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail").value;
+    const password = document.getElementById("loginPassword").value;
+
+    try {
+
+      await signInWithEmailAndPassword(auth, email, password);
+
+      alert("Login Successful!");
+
+      window.location.href = "home.html";
+
+    } catch (error) {
+
+      alert(error.message);
+
+    }
+
+  });
+
+}
