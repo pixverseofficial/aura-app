@@ -14,7 +14,11 @@ import {
 import {
   doc,
   setDoc,
-  getDoc
+  getDoc,
+  collection,
+  query,
+  where,
+  getDocs
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const signupForm = document.getElementById("signupForm");
