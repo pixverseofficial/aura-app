@@ -210,6 +210,8 @@ if (searchBtn) {
 
       addFriendBtn.addEventListener("click", async () => {
 
+        console.log("Add Friend clicked");
+
         await addDoc(collection(db, "friendRequests"), {
           from: auth.currentUser.uid,
           to: addFriendBtn.dataset.id,
