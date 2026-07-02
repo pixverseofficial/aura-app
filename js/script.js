@@ -182,6 +182,27 @@ onAuthStateChanged(auth, async (user) => {
 
         });
 
+        const acceptBtns = document.querySelectorAll(".acceptBtn");
+
+        acceptBtns.forEach((btn) => {
+
+          btn.addEventListener("click", async () => {
+
+            await updateDoc(
+              doc(db, "friendRequests", btn.dataset.id),
+              {
+                status: "accepted"
+              }
+            );
+
+            alert("Friend request accepted!");
+
+            location.reload();
+
+          });
+
+        });
+
       }
 
     }
