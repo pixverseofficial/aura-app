@@ -18,7 +18,8 @@ import {
   collection,
   query,
   where,
-  getDocs
+  getDocs,
+  addDoc
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
 
 const signupForm = document.getElementById("signupForm");
@@ -189,11 +190,36 @@ if (searchBtn) {
         <div class="activity-card">
           <h3>${user.name}</h3>
           <p>${user.email}</p>
-          <button class="login-btn">Add Friend</button>
+          <button
+            class="login-btn addFriendBtn"
+            data-id="${doc.id}"
+            data-name="${user.name}"
+          >
+            Add Friend
+          </button>
         </div>
       `;
 
     });
+
+    const addFriendBtn = document.querySelector(".addFriendBtn");
+
+    if (addFriendBtn) {
+
+      addFriendBtn.addEventListener("click", async () => {
+
+        await addDoc(collection(db, "friendRequests"), {
+          from: auth.currentUser.uid,
+          to: addFriendBtn.dataset.id,
+          status: "pending",
+          createdAt: new Date().toISOString()
+        });
+
+        alert("Friend request sent!");
+
+      });
+
+    }
 
   });
 
