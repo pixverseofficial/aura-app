@@ -144,3 +144,45 @@ if (logoutBtn) {
   });
 
 }
+
+const searchBtn = document.getElementById("searchBtn");
+
+if (searchBtn) {
+
+  searchBtn.addEventListener("click", async () => {
+
+    const email = document.getElementById("searchEmail").value.trim();
+    const result = document.getElementById("searchResult");
+
+    const q = query(
+      collection(db, "users"),
+      where("email", "==", email)
+    );
+
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+
+      result.innerHTML = "<p>User not found.</p>";
+
+      return;
+
+    }
+
+    querySnapshot.forEach((doc) => {
+
+      const user = doc.data();
+
+      result.innerHTML = `
+        <div class="activity-card">
+          <h3>${user.name}</h3>
+          <p>${user.email}</p>
+          <button class="login-btn">Add Friend</button>
+        </div>
+      `;
+
+    });
+
+  });
+
+}
