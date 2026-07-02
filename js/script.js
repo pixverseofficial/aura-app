@@ -77,3 +77,18 @@ if (loginForm) {
   });
 
 }
+onAuthStateChanged(auth, (user) => {
+
+  const protectedPages = [
+    "home.html",
+    "chat.html",
+    "chat-room.html"
+  ];
+
+  const currentPage = window.location.pathname.split("/").pop();
+
+  if (protectedPages.includes(currentPage) && !user) {
+    window.location.href = "login.html";
+  }
+
+});
