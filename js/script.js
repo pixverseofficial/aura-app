@@ -203,6 +203,24 @@ onAuthStateChanged(auth, async (user) => {
 
         });
 
+        const rejectBtns = document.querySelectorAll(".rejectBtn");
+
+        rejectBtns.forEach((btn) => {
+
+          btn.addEventListener("click", async () => {
+
+            await deleteDoc(
+              doc(db, "friendRequests", btn.dataset.id)
+            );
+
+            alert("Friend request rejected!");
+
+            location.reload();
+
+          });
+
+        });
+
       }
 
     }
