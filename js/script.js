@@ -11,6 +11,11 @@ import {
   onAuthStateChanged
 } from "https://www.gstatic.com/firebasejs/12.0.0/firebase-auth.js";
 
+import {
+  doc,
+  setDoc
+} from "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js";
+
 const signupForm = document.getElementById("signupForm");
 
 if (signupForm) {
@@ -19,6 +24,7 @@ if (signupForm) {
 
     e.preventDefault();
 
+    const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
@@ -30,7 +36,13 @@ if (signupForm) {
 
     try {
 
-      await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
+      await setDoc(doc(db, "users", userCredential.user.uid), {
+        name: name,
+        email: email,
+        createdAt: new Date().toISOString()
+      });
 
       alert("Account created successfully!");
 
