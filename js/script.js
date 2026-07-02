@@ -91,7 +91,7 @@ if (loginForm) {
   });
 
 }
-onAuthStateChanged(auth, (user) => {
+onAuthStateChanged(auth, async (user) => {
 
   const protectedPages = [
     "home.html",
@@ -103,6 +103,24 @@ onAuthStateChanged(auth, (user) => {
 
   if (protectedPages.includes(currentPage) && !user) {
     window.location.href = "login.html";
+  }
+
+  if (user) {
+
+    const welcomeText = document.getElementById("welcomeText");
+
+    if (welcomeText) {
+
+      const userDoc = await getDoc(doc(db, "users", user.uid));
+
+      if (userDoc.exists()) {
+
+        welcomeText.textContent = `Welcome Back, ${userDoc.data().name} 👋`;
+
+      }
+
+    }
+
   }
 
 });
