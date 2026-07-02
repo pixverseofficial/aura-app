@@ -45,6 +45,7 @@ if (signupForm) {
 
       await setDoc(doc(db, "users", userCredential.user.uid), {
         name: name,
+        searchName: name.toLowerCase(),
         email: email,
         createdAt: new Date().toISOString()
       });
@@ -151,12 +152,12 @@ if (searchBtn) {
 
   searchBtn.addEventListener("click", async () => {
 
-    const searchText = document.getElementById("searchEmail").value.trim();
+    const searchText = document.getElementById("searchEmail").value.trim().toLowerCase();
     const result = document.getElementById("searchResult");
 
     let q = query(
       collection(db, "users"),
-      where("email", "==", searchText)
+      where("searchName", "==", searchText)
     );
 
     let querySnapshot = await getDocs(q);
@@ -165,7 +166,7 @@ if (searchBtn) {
 
       q = query(
         collection(db, "users"),
-        where("name", "==", searchText)
+        where("email", "==", searchText)
       );
 
       querySnapshot = await getDocs(q);
